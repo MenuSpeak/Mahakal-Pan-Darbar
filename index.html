@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>महाकाल पान दरबार | Mahakal Pan Darbar - Premium Paan Menu</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-dark: #0a0a0c;
+      --surface: #0f1115;
+      --card-bg: rgba(18, 20, 26, 0.85);
+      --gold-primary: #D4AF37;
+      --gold-light: #FFDE8A;
+      --gold-glow: rgba(212, 175, 55, 0.4);
+      --green-accent: #2E7D32;
+      --green-soft: #4CAF50;
+      --muted-text: #b0b3b8;
+      --white-soft: #f5f2e6;
+      --glass-border: rgba(212, 175, 55, 0.2);
+      --shadow-premium: 0 20px 35px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.1);
+      --ff-serif: 'Playfair Display', serif;
+      --ff-sans: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 20%, rgba(212,175,55,0.08), #050505 80%),
+                  repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 8px);
+      background-color: var(--bg-dark);
+      color: var(--white-soft);
+      font-family: var(--ff-sans);
+      padding: 1.2rem;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    /* smoke/glow effect overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 70% 30%, rgba(212,175,55,0.03), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: 2rem;
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
+
+    .shop-name {
+      font-family: var(--ff-serif);
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 15px rgba(212,175,55,0.3);
+      letter-spacing: 1px;
+    }
+
+    .shop-sub {
+      font-size: 1.1rem;
+      color: var(--green-soft);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .tagline {
+      font-size: 1.9rem;
+      font-weight: 700;
+      font-family: var(--ff-serif);
+      margin-top: 0.75rem;
+      background: linear-gradient(120deg, #fff, var(--gold-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1.5rem 0 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-call, .btn-wa {
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-call {
+      background: linear-gradient(135deg, #1e2a1e, #0f1a0f);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+    }
+    .btn-wa {
+      background: #25D366;
+      color: #0a0a0c;
+      border: none;
+      box-shadow: 0 0 10px rgba(37,211,102,0.4);
+    }
+    .btn-call:hover, .btn-wa:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.05);
+    }
+
+    /* Sticky navbar */
+    .sticky-nav {
+      position: sticky;
+      top: 12px;
+      z-index: 98;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      padding: 0.6rem 1rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(212,175,55,0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .tabs-scroll {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .tab {
+      background: transparent;
+      border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted-text);
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .tab.active, .tab:hover {
+      background: linear-gradient(95deg, var(--gold-primary), var(--gold-light));
+      color: #0a0a0c;
+      border-color: transparent;
+      box-shadow: 0 0 12px var(--gold-glow);
+      transform: translateY(-1px);
+    }
+
+    /* search box */
+    .search-wrap {
+      margin: 1rem 0 1.8rem;
+      display: flex;
+      justify-content: center;
+    }
+    .search-box {
+      background: rgba(20, 22, 28, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 50px;
+      padding: 0.7rem 1.2rem;
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .search-box i {
+      color: var(--gold-primary);
+    }
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .search-box input::placeholder {
+      color: #aaa;
+    }
+
+    /* Menu grid - glassmorphism cards */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.6rem;
+      margin: 1rem 0 3rem;
+    }
+
+    .menu-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      border: 1px solid var(--glass-border);
+      padding: 1.2rem 1.2rem 1.2rem;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      border-color: var(--gold-primary);
+      box-shadow: 0 20px 35px -8px black, 0 0 0 1px rgba(212,175,55,0.5);
+    }
+    .menu-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold-primary), var(--gold-light));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 0.6rem;
+    }
+    .item-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-family: var(--ff-serif);
+      letter-spacing: -0.2px;
+    }
+    .item-name small {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--muted-text);
+      font-family: var(--ff-sans);
+    }
+    .item-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--gold-primary);
+      background: rgba(212,175,55,0.1);
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+    }
+    .view-icon {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      border-top: 1px dashed rgba(212,175,55,0.3);
+      padding-top: 0.8rem;
+    }
+    .view-icon i {
+      transition: 0.2s;
+    }
+    .menu-card:hover .view-icon i {
+      transform: translateX(4px);
+    }
+
+    /* MODAL / LIGHTBOX premium */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      max-width: 90vw;
+      max-height: 85vh;
+      background: rgba(20, 20, 25, 0.95);
+      border-radius: 36px;
+      padding: 0.8rem;
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.6), 0 0 0 2px rgba(212,175,55,0.3);
+      animation: zoomFade 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    @keyframes zoomFade {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-content img {
+      width: auto;
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 24px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 20px black;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .close-modal:hover {
+      background: var(--gold-primary);
+      color: black;
+      transform: scale(1.05);
+    }
+
+    /* gallery & contact sections */
+    .section-glow {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      padding: 2rem 1.5rem;
+      margin: 2.5rem 0;
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+    .gallery-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .gallery-item {
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      background: #1e1e1e;
+      border: 1px solid var(--gold-primary);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .contact-info {
+      text-align: center;
+    }
+    .map-container {
+      margin: 1rem auto;
+      border-radius: 28px;
+      overflow: hidden;
+      max-width: 600px;
+      border: 1px solid var(--gold-primary);
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem 0.5rem;
+      border-top: 1px solid rgba(212,175,55,0.2);
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+    .float-wa {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: #25D366;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      z-index: 99;
+      transition: 0.2s;
+    }
+    .float-wa a {
+      color: white;
+      font-size: 2rem;
+    }
+    .float-wa:hover {
+      transform: scale(1.08);
+    }
+    @media (max-width: 640px) {
+      .shop-name { font-size: 2.2rem; }
+      .tagline { font-size: 1.3rem; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .sticky-nav { overflow-x: auto; white-space: nowrap; }
+      .tabs-scroll { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="shop-name">महाकाल पान दरबार</div>
+    <div class="shop-sub">Mahakal Pan Darbar</div>
+    <div class="tagline">“खाता का नेता...!”</div>
+    <div class="hero-buttons">
+      <a href="tel:+919372092960" class="btn-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+      <a href="https://wa.me/919372092960?text=नमस्ते!%20महाकाल%20पान%20दरबार%20से%20ऑर्डर%20करना%20है।" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Order</a>
+    </div>
+  </div>
+
+  <!-- Sticky Tabs Nav -->
+  <div class="sticky-nav">
+    <div class="tabs-scroll" id="tabContainer">
+      <button class="tab active" data-cat="all">✨ सर्व | All</button>
+      <button class="tab" data-cat="chocolate">🍫 चॉकलेट पान</button>
+      <button class="tab" data-cat="chutney">🌿 चटणी पान</button>
+      <button class="tab" data-cat="special">👑 स्पेशल पान</button>
+      <button class="tab" data-cat="mahakal">🕉️ महाकाल स्पेशल</button>
+      <button class="tab" data-cat="masala">🔥 मसाला पान</button>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="पान खोजें... search pan...">
+    </div>
+  </div>
+
+  <!-- Menu Grid -->
+  <div id="menuGrid" class="menu-grid"></div>
+
+  <!-- Gallery Section (premium feel) -->
+  <div class="section-glow">
+    <h2 style="text-align:center; font-family:var(--ff-serif); color:var(--gold-light)"><i class="fas fa-camera"></i> हमारी दुनिया | Pan Gallery</h2>
+    <div class="gallery-grid" id="galleryPreview">
+      <!-- sample gallery - images from img folder -->
+      <div class="gallery-item" data-img="img/chocolate-pan.jpg"><img src="img/chocolate-pan.jpg" alt="Chocolate Pan" onerror="this.src='https://placehold.co/400x400/2a2a2a/d4af37?text=Chocolate+Pan'"></div>
+      <div class="gallery-item" data-img="img/special-pan.jpg"><img src="img/special-pan.jpg" alt="Special Pan" onerror="this.src='https://placehold.co/400x400/1e3a1e/d4af37?text=Special+Pan'"></div>
+      <div class="gallery-item" data-img="img/masala-pan.jpg"><img src="img/masala-pan.jpg" alt="Masala Pan" onerror="this.src='https://placehold.co/400x400/311f0c/d4af37?text=Masala+Pan'"></div>
+    </div>
+    <p style="text-align:center; margin-top:12px; font-size:0.8rem;">✨ क्लिक करें और पान की छवि देखें | Click any pan item to view image ✨</p>
+  </div>
+
+  <!-- Contact & Map Section -->
+  <div class="section-glow contact-info">
+    <h3 style="color: var(--gold-light)"><i class="fas fa-map-marker-alt"></i> हमसे जुड़ें</h3>
+    <p>📍 उज्जैन, मध्य प्रदेश | महाकाल मंदिर के पास</p>
+    <p>📞 +91 93720 92960  |  ✨ पान दरबार – स्वाद का राजा</p>
+    <div class="map-container">
+      <iframe src="https://maps.google.com/maps?q=Mahakal%20Mandir%20Ujjain&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div style="display:flex; justify-content:center; gap:1.5rem; margin-top:1rem;">
+      <a href="https://www.instagram.com/" style="color:var(--gold-light); font-size:1.8rem;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color:var(--gold-light); font-size:1.8rem;"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </div>
+  <div class="footer">
+    © 2026 महाकाल पान दरबार | Premium Paan Since 2025 | खाता का नेता
+  </div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<div class="float-wa">
+  <a href="https://wa.me/919372092960?text=महाकाल%20पान%20दरबार%20से%20ऑर्डर%20करना%20है।" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="imageModal" class="modal-overlay">
+  <div class="close-modal" id="closeModalBtn">&times;</div>
+  <div class="modal-content">
+    <img id="modalImage" src="" alt="Pan Image">
+  </div>
+</div>
+
+<script>
+  // ============ COMPLETE MENU DATA WITH IMAGE PATHS ============
+  // All images will load from "img" folder - just put your images with these filenames
+  const menuItems = [
+    // Chocolate Pan
+    { id:1, cat:"chocolate", nameMar:"चॉकलेट पान", nameEng:"Chocolate Pan", price:30, imgFile:"chocolate-pan.jpg" },
+    { id:2, cat:"chocolate", nameMar:"पायनॅपल चॉकलेट पान", nameEng:"Pineapple Chocolate Pan", price:30, imgFile:"pineapple-chocolate-pan.jpg" },
+    { id:3, cat:"chocolate", nameMar:"ऑरेंज चॉकलेट पान", nameEng:"Orange Chocolate Pan", price:30, imgFile:"orange-chocolate-pan.jpg" },
+    { id:4, cat:"chocolate", nameMar:"स्ट्रॉबेरी चॉकलेट पान", nameEng:"Strawberry Chocolate Pan", price:30, imgFile:"strawberry-chocolate-pan.jpg" },
+    { id:5, cat:"chocolate", nameMar:"ब्ल्यू बेरी चॉकलेट पान", nameEng:"Blue Berry Chocolate Pan", price:40, imgFile:"blueberry-chocolate-pan.jpg" },
+    { id:6, cat:"chocolate", nameMar:"ड्रायफ्रूट चॉकलेट पान", nameEng:"Dryfruit Chocolate Pan", price:50, imgFile:"dryfruit-chocolate-pan.jpg" },
+    { id:7, cat:"chocolate", nameMar:"दिलखुश चॉकलेट पान", nameEng:"Dilkhush Chocolate Pan", price:40, imgFile:"dilkhush-chocolate-pan.jpg" },
+    { id:8, cat:"chocolate", nameMar:"बटरस्कॉच चॉकलेट पान", nameEng:"Butterscotch Chocolate Pan", price:50, imgFile:"butterscotch-chocolate-pan.jpg" },
+    { id:9, cat:"chocolate", nameMar:"लिची चॉकलेट पान", nameEng:"Litchi Chocolate Pan", price:50, imgFile:"litchi-chocolate-pan.jpg" },
+    { id:10, cat:"chocolate", nameMar:"कोकोनट चॉकलेट पान", nameEng:"Coconut Chocolate Pan", price:50, imgFile:"coconut-chocolate-pan.jpg" },
+    { id:11, cat:"chocolate", nameMar:"पिस्ता चॉकलेट पान", nameEng:"Pista Chocolate Pan", price:50, imgFile:"pista-chocolate-pan.jpg" },
+    { id:12, cat:"chocolate", nameMar:"पिस्ता ड्रायफ्रूट चॉकलेट पान", nameEng:"Pista Dryfruit Chocolate Pan", price:60, imgFile:"pista-dryfruit-chocolate-pan.jpg" },
+    { id:13, cat:"chocolate", nameMar:"ब्लॅक करंट चॉकलेट पान", nameEng:"Black Currant Chocolate Pan", price:50, imgFile:"blackcurrant-chocolate-pan.jpg" },
+    { id:14, cat:"chocolate", nameMar:"ड्रायफ्रूट चॉकलेट पान", nameEng:"Dryfruit Chocolate Pan", price:50, imgFile:"dryfruit-chocolate-pan-2.jpg" },
+    { id:15, cat:"chocolate", nameMar:"स्पेशल चॉकलेट पान", nameEng:"Special Chocolate Pan", price:40, imgFile:"special-chocolate-pan.jpg" },
+    // Chutney Pan
+    { id:16, cat:"chutney", nameMar:"रामप्यारी चटणी पान", nameEng:"Ram Pyari Chutney Pan", price:30, imgFile:"rampyari-chutney-pan.jpg" },
+    { id:17, cat:"chutney", nameMar:"नवरत्न चटणी पान", nameEng:"Navratna Chutney Pan", price:30, imgFile:"navratna-chutney-pan.jpg" },
+    { id:18, cat:"chutney", nameMar:"चटणी खुशबू पान", nameEng:"Chutney Khushbu Pan", price:20, imgFile:"chutney-khushbu-pan.jpg" },
+    // Special Pan
+    { id:19, cat:"special", nameMar:"मालगाव स्पेशल पान", nameEng:"Malgaon Special Pan", price:30, imgFile:"malgaon-special-pan.jpg" },
+    { id:20, cat:"special", nameMar:"स्पेशल स्वीट पान", nameEng:"Special Sweet Pan", price:30, imgFile:"sweet-special-pan.jpg" },
+    { id:21, cat:"special", nameMar:"बादशाही पान", nameEng:"Badshahi Pan", price:30, imgFile:"badshahi-pan.jpg" },
+    { id:22, cat:"special", nameMar:"नवरत्न बादशाही पान", nameEng:"Navratna Badshahi Pan", price:30, imgFile:"navratna-badshahi-pan.jpg" },
+    { id:23, cat:"special", nameMar:"१२०-३०० पान", nameEng:"120-300 Pan", price:30, imgFile:"120-300-pan.jpg" },
+    { id:24, cat:"special", nameMar:"१६० पान", nameEng:"160 Pan", price:30, imgFile:"160-pan.jpg" },
+    // Mahakal Special
+    { id:25, cat:"mahakal", nameMar:"महाकाल धमाका", nameEng:"Mahakal Dhamaka", price:70, imgFile:"mahakal-dhamaka.jpg" },
+    { id:26, cat:"mahakal", nameMar:"महाकाल स्पेशल गुलकंद (फुल)", nameEng:"Mahakal Special Gulcand (Full)", price:60, imgFile:"mahakal-gulcand-full.jpg" },
+    { id:27, cat:"mahakal", nameMar:"महाकाल स्पेशल गुलकंद (कट)", nameEng:"Mahakal Special Gulcand (Cut)", price:30, imgFile:"mahakal-gulcand-cut.jpg" },
+    { id:28, cat:"mahakal", nameMar:"महाकाल फुलचंद (फुल)", nameEng:"Mahakal Fulchand (Full)", price:40, imgFile:"mahakal-fulchand-full.jpg" },
+    { id:29, cat:"mahakal", nameMar:"महाकाल फुलचंद (कट)", nameEng:"Mahakal Fulchand (Cut)", price:20, imgFile:"mahakal-fulchand-cut.jpg" },
+    // Masala Pan (23 items)
+    { id:30, cat:"masala", nameMar:"महाकाल स्पेशल पान", nameEng:"Mahakal Special Pan", price:30, imgFile:"mahakal-special-pan.jpg" },
+    { id:31, cat:"masala", nameMar:"मसाला पान", nameEng:"Masala Pan", price:25, imgFile:"masala-pan.jpg" },
+    { id:32, cat:"masala", nameMar:"पायनॅपल मसाला", nameEng:"Pineapple Masala", price:30, imgFile:"pineapple-masala.jpg" },
+    { id:33, cat:"masala", nameMar:"स्ट्रॉबेरी मसाला", nameEng:"Strawberry Masala", price:30, imgFile:"strawberry-masala.jpg" },
+    { id:34, cat:"masala", nameMar:"अॅपल मसाला", nameEng:"Apple Masala", price:30, imgFile:"apple-masala.jpg" },
+    { id:35, cat:"masala", nameMar:"मॅंगो मसाला", nameEng:"Mango Masala", price:30, imgFile:"mango-masala.jpg" },
+    { id:36, cat:"masala", nameMar:"ऑरेंज मसाला", nameEng:"Orange Masala", price:30, imgFile:"orange-masala.jpg" },
+    { id:37, cat:"masala", nameMar:"ब्ल्यू बेरी मसाला", nameEng:"Blue Berry Masala", price:30, imgFile:"blueberry-masala.jpg" },
+    { id:38, cat:"masala", nameMar:"खस मसाला", nameEng:"Khas Masala", price:30, imgFile:"khas-masala.jpg" },
+    { id:39, cat:"masala", nameMar:"कस्तुरी मसाला", nameEng:"Kasturi Masala", price:50, imgFile:"kasturi-masala.jpg" },
+    { id:40, cat:"masala", nameMar:"ड्रायफ्रूट मसाला", nameEng:"Dryfruit Masala", price:50, imgFile:"dryfruit-masala.jpg" },
+    { id:41, cat:"masala", nameMar:"मेंथॉल मसाला", nameEng:"Menthol Masala", price:40, imgFile:"menthol-masala.jpg" },
+    { id:42, cat:"masala", nameMar:"रजनीगंधा मसाला", nameEng:"Rajnigandha Masala", price:40, imgFile:"rajnigandha-masala.jpg" },
+    { id:43, cat:"masala", nameMar:"खर्रा मसाला", nameEng:"Kharra Masala", price:30, imgFile:"kharra-masala.jpg" },
+    { id:44, cat:"masala", nameMar:"व्होर्टिलीन मसाला", nameEng:"Vortilin Masala", price:30, imgFile:"vortilin-masala.jpg" },
+    { id:45, cat:"masala", nameMar:"ब्लॅक करंट मसाला", nameEng:"Black Currant Masala", price:30, imgFile:"blackcurrant-masala.jpg" },
+    { id:46, cat:"masala", nameMar:"रजनीगंधा स्पेशल मसाला", nameEng:"Rajnigandha Special Masala", price:30, imgFile:"rajnigandha-special-masala.jpg" },
+    { id:47, cat:"masala", nameMar:"काळा खट्टा मसाला", nameEng:"Kala Khatta Masala", price:30, imgFile:"kala-khatta-masala.jpg" },
+    { id:48, cat:"masala", nameMar:"कच्ची कैरी मसाला", nameEng:"Kacchi Kairi Masala", price:30, imgFile:"kacchi-kairi-masala.jpg" },
+    { id:49, cat:"masala", nameMar:"चंदन मसाला", nameEng:"Chandan Masala", price:30, imgFile:"chandan-masala.jpg" },
+    { id:50, cat:"masala", nameMar:"मिक्स फ्रूट मसाला", nameEng:"Mix Fruit Masala", price:30, imgFile:"mix-fruit-masala.jpg" },
+    { id:51, cat:"masala", nameMar:"फायर पान मसाला", nameEng:"Fire Pan Masala", price:50, imgFile:"fire-pan-masala.jpg" },
+    { id:52, cat:"masala", nameMar:"आईस ब्लास्ट मसाला", nameEng:"Ice Blast Masala", price:50, imgFile:"iceblast-masala.jpg" }
+  ];
+
+  // Function to get image path from img folder
+  function getImagePath(imgFile) {
+    return `img/${imgFile}`;
+  }
+
+  let activeCategory = "all";
+  let searchTerm = "";
+
+  function renderMenu() {
+    let filtered = menuItems.filter(item => {
+      if (activeCategory !== "all" && item.cat !== activeCategory) return false;
+      if (searchTerm !== "") {
+        const fullText = (item.nameMar + item.nameEng + item.cat).toLowerCase();
+        if (!fullText.includes(searchTerm.toLowerCase())) return false;
+      }
+      return true;
+    });
+    const grid = document.getElementById("menuGrid");
+    if(filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:2rem;">❌ कोई पान नहीं मिला | No item found</div>`;
+      return;
+    }
+    grid.innerHTML = filtered.map(item => `
+      <div class="menu-card" data-id="${item.id}" data-image="${getImagePath(item.imgFile)}" data-itemname="${item.nameMar}">
+        <div class="item-header">
+          <div class="item-name">${item.nameMar} <small>| ${item.nameEng}</small></div>
+          <div class="item-price">₹${item.price}</div>
+        </div>
+        <div class="view-icon">
+          <span>👁️ View Pan</span> <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    `).join("");
+    
+    // attach click event listeners for modal
+    document.querySelectorAll('.menu-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const imgUrl = card.getAttribute('data-image');
+        const itemName = card.getAttribute('data-itemname') || "Mahakal Pan";
+        openModalWithImage(imgUrl, itemName);
+      });
+    });
+  }
+
+  // modal logic
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  
+  function openModalWithImage(src, title) {
+    modalImg.src = src;
+    modalImg.alt = title;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    
+    // if image fails to load, show fallback
+    modalImg.onerror = function() {
+      this.src = `https://placehold.co/600x500/2a2a2a/d4af37?text=${encodeURIComponent(title)}&font=playfair`;
+    };
+  }
+  
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+  
+  document.getElementById("closeModalBtn").addEventListener("click", closeModal);
+  modal.addEventListener("click", (e) => {
+    if(e.target === modal) closeModal();
+  });
+
+  // gallery items also open modal (using img folder)
+  document.querySelectorAll(".gallery-item").forEach(gItem => {
+    gItem.addEventListener("click", () => {
+      let imgSrc = gItem.getAttribute("data-img");
+      if(imgSrc) {
+        openModalWithImage(imgSrc, "पान Special");
+      }
+    });
+  });
+
+  // filter & search listeners
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      activeCategory = tab.getAttribute("data-cat");
+      renderMenu();
+    });
+  });
+  
+  document.getElementById("searchInput").addEventListener("input", (e) => {
+    searchTerm = e.target.value;
+    renderMenu();
+  });
+
+  // initial render
+  renderMenu();
+</script>
+</body>
+</html>
